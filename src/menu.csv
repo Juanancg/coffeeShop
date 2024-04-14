@@ -1,0 +1,9 @@
+# beverage,type,price,extras,rule
+coffee,espresso,2.00,sugar-milk-cream,""
+coffee,latte,3.00,sugar-milk-cream,""
+coffee,decaf,2.50,sugar-milk-cream,""
+tea,black tea,1.50,sugar-milk-soymilk-honey-lemon,cannot_have:both(milk;lemon)
+tea,green tea,1.75,sugar-milk-soymilk-honey-lemon,cannot_have:both(milk;lemon)
+cocoa,milk,3.50,sugar,""
+cocoa,soymilk,4.00,sugar,""
+cocoa,water,3.00,sugar,""

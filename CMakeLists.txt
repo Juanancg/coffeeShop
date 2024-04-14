@@ -19,12 +19,35 @@ include_directories(
 
 
 SET(SOURCE_FILES
-    src/OrderManager.cpp
     src/main.cpp
-)
 
+    src/ui/ShellUI.cpp
+    src/OrderManager.cpp
+
+    src/storage/DiskStorage.cpp
+
+    src/types/Order.cpp
+    src/types/Beverage.cpp
+
+    src/menu_parsers/CSVParser.cpp
+)
+    
 SET(HEADER_FILES
+    src/ui/ShellUI.h
+    src/ui/UIiface.h
+
     src/OrderManager.h
+
+    src/storage/DiskStorage.h
+    src/storage/IOrderStorage.h
+
+
+    src/types/Order.h
+    src/types/Beverage.h
+
+    src/menu_parsers/MenuParserFactory.h
+    src/menu_parsers/CSVParser.h
+    src/menu_parsers/IMenuParser.h
 )
 
 

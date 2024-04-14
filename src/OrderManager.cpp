@@ -2,15 +2,21 @@
 
 #include <iostream>
 
-OrderManager::OrderManager() {
+OrderManager::OrderManager()
+{
+    storage_ = storage::OrderStorageFactory::createParser(storage::OrderStorageFactory::StorageType::DISK);
+
+    storage_->SetSourceDestination("/opt/coffeeShop/build/orders.txt");
 }
 
-OrderManager::~OrderManager() {
+OrderManager::~OrderManager()
+{
 }
 
-void OrderManager::RegisterOrder() {
+void OrderManager::RegisterOrder(std::unique_ptr<Beverage> drink)
+{
 }
 
-void OrderManager::CancelOrder(int index) {
-    std::cout << index << std::endl;
+void OrderManager::CancelOrder(int index)
+{
 }

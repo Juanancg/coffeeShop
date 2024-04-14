@@ -12,7 +12,7 @@ function enter_docker_env()
         --pid=host \
         --volume="/tmp/.X11-unix:/tmp/.X11-unix" \
         --volume="/etc/sssd/:/etc/sssd/" \
-        --volume="/home/juanan/git/coffeeShop/:/opt/orderManager/:rw" \
+        --volume="/home/juanan/git/coffeeShop/:/opt/coffeeShop/:rw" \
         --network host coffee_shop \
         bash 
 }

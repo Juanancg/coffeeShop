@@ -5,6 +5,6 @@ FROM debian:11
 RUN apt-get update && \
     apt-get install -y cmake g++ clang-format libgtest-dev
 
-WORKDIR /opt/orderManager
+WORKDIR /opt/coffeeShop
 
 CMD ["/bin/bash"]

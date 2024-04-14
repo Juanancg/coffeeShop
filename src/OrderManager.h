@@ -1,16 +1,26 @@
-#ifndef ORDERMANAGER_H
-#define ORDERMANAGER_H
+#ifndef COFFEESHOP_SRC_ORDERMANAGER_H
+#define COFFEESHOP_SRC_ORDERMANAGER_H
 
-class OrderManager {
-   public:
-    OrderManager();
-    ~OrderManager();
+#include <memory>
+#include <vector>
 
-    void RegisterOrder();
+#include "types/Order.h"
+#include "types/Beverage.h"
+#include "storage/OrderStorageFactory.h"
 
-    void CancelOrder(int index);
+class OrderManager
+{
+public:
+   OrderManager();
+   ~OrderManager();
 
-   private:
+   void RegisterOrder(std::unique_ptr<Beverage> drink);
+   void CancelOrder(int index);
+   void PrintOrders() const;
+
+private:
+   std::unique_ptr<storage::IOrderStorage> storage_;
+   std::vector<std::shared_ptr<Order>> orders_; // TODO Not sure about the property
 };
 
-#endif
+#endif // endif COFFEESHOP_SRC_ORDERMANAGER_H
