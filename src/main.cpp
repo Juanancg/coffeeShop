@@ -2,7 +2,8 @@
 #include <memory>
 
 #include "ui/ShellUI.h"
-#include "menu_parsers/MenuParserFactory.h"
+#include "menu_parsers/MenuParserFactory.h" // TODO RENAME MENU_PARSERS folder
+#include "rules/RuleManager.h"
 #include "ui/ShellUI.h"
 
 int main(int argc, char **argv)
@@ -14,13 +15,23 @@ int main(int argc, char **argv)
     bool ret = parser->ParseMenu(path);
 
     menu::MenuUI menuParsed = parser->GetMenuForUI();
-
+    menu::RawRules rawRules = parser->GetRawRules();
+    rules::RuleManager ruleMgr;
     ShellUI ui;
 
     ui.Start(menuParsed);
+    ruleMgr.LoadRules(rawRules);
+
     std::unique_ptr<Beverage> beveragePtr = ui.createBeverage();
 
-    // TODO Check with rule manager if it fulfil the conditions
+    if (ruleMgr.CheckBeverage(beveragePtr->GetBeverageMain(), beveragePtr->GetBeverageVariety(), beveragePtr->GetExtras()))
+    {
+        std::cout << "Valid Beverage!!!" << std::endl;
+    }
+    else
+    {
+        std::cout << "Invalid Beverage :( " << std::endl;
+    }
 
     // TODO If yes -> OrderManager CreateOrder
 

@@ -55,6 +55,7 @@ namespace rules
             // Parse the rule string and extract the extras
             // Expect cannot_have:both(milk;lemon)
             std::size_t pos = rawRule.find(':');
+            // FUTURE: Here you do somehting with the both, maybe a future rule could be instead of both neither
 
             if (pos != std::string::npos && pos < rawRule.size() - 1)
             {

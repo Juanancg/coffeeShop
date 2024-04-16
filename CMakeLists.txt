@@ -32,7 +32,7 @@ SET(SOURCE_FILES
     src/rules/RuleManager.cpp
 
     src/menu_parsers/CSVParser.cpp
-    
+
     src/utils/StringUtils.cpp
 )
     
@@ -50,6 +50,7 @@ SET(HEADER_FILES
     src/types/Beverage.h
     
     src/rules/RuleManager.h
+    src/rules/RuleFactory.h
     src/rules/CannotHaveBoth.h
     src/rules/IRuleExtras.h
 
