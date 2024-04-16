@@ -7,9 +7,11 @@ Beverage::Beverage(const std::string &beverage, const std::string &type, const u
 
 bool Beverage::IsValid() const
 {
+    // TODO
     return true;
 }
 
 void Beverage::Print() const
 {
+    // TODO
 }

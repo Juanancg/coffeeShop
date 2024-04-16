@@ -20,8 +20,7 @@ namespace menu
     typedef std::map<std::string, std::vector<menu::stcBeverageMenuEntry>> MenuUI;
 
     // Defines the type for manage the weird rules.
-    // std::pair<MainBeverage, BeverageVariety>
-    typedef std::pair<std::string, std::string> BeverageVariety;
+    typedef std::pair<std::string, std::string> BeverageVariety; // std::pair<MainBeverage, BeverageVariety>
     typedef std::map<BeverageVariety, std::vector<std::string>> RawRules;
 
     class IMenuParser

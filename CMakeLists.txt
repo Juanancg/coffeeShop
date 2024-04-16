@@ -29,7 +29,11 @@ SET(SOURCE_FILES
     src/types/Order.cpp
     src/types/Beverage.cpp
 
+    src/rules/RuleManager.cpp
+
     src/menu_parsers/CSVParser.cpp
+    
+    src/utils/StringUtils.cpp
 )
     
 SET(HEADER_FILES
@@ -38,16 +42,22 @@ SET(HEADER_FILES
 
     src/OrderManager.h
 
+    src/storage/OrderStorageFactory.h
     src/storage/DiskStorage.h
     src/storage/IOrderStorage.h
 
-
     src/types/Order.h
     src/types/Beverage.h
+    
+    src/rules/RuleManager.h
+    src/rules/CannotHaveBoth.h
+    src/rules/IRuleExtras.h
 
     src/menu_parsers/MenuParserFactory.h
     src/menu_parsers/CSVParser.h
     src/menu_parsers/IMenuParser.h
+
+    src/utils/StringUtils.h
 )
 
 

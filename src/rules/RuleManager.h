@@ -1,5 +1,5 @@
-#ifndef RULEMANAGER_H
-#define RULEMANAGER_H
+#ifndef COFFEESHOP_SRC_RULES_RULEMANAGER_H
+#define COFFEESHOP_SRC_RULES_RULEMANAGER_H
 
 #include "../menu_parsers/IMenuParser.h"
 
@@ -14,10 +14,10 @@ namespace rules
 
         void LoadRules(const menu::RawRules &rawRules);
 
-        bool CheckBeverage();
+        bool CheckBeverage(const std::string &mainBeverage, const std::string &variety, const std::vector<std::string> &extras);
 
     private:
     };
 }
 
-#endif // RULEMANAGER_H
+#endif // COFFEESHOP_SRC_RULES_RULEMANAGER_H

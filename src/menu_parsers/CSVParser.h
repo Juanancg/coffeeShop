@@ -3,6 +3,8 @@
 
 #include "IMenuParser.h"
 
+#include "../utils/StringUtils.h"
+
 namespace menu
 {
     // beverage,type,price,extras,rule
@@ -22,8 +24,6 @@ namespace menu
         bool ParseMenu(const std::string &path);
 
         void ProcessMenuEntry(const std::vector<std::string> &lineTokens, stcBeverageMenuEntry &entry);
-
-        void Tokenize(const std::string &line, const char separator, std::vector<std::string> &tokens);
 
         void SaveRawRules(const std::string &beverageName, const stcBeverageMenuEntry &entry);
 

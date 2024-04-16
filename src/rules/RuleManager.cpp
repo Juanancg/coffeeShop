@@ -1,9 +1,14 @@
 #include "RuleManager.h"
 
-RuleManager::RuleManager()
+namespace rules
 {
-}
 
-RuleManager::~RuleManager()
-{
+    RuleManager::RuleManager()
+    {
+    }
+
+    RuleManager::~RuleManager()
+    {
+    }
+
 }

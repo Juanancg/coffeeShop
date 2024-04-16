@@ -15,8 +15,10 @@ OrderManager::~OrderManager()
 
 void OrderManager::RegisterOrder(std::unique_ptr<Beverage> drink)
 {
+    // TODO
 }
 
 void OrderManager::CancelOrder(int index)
 {
+    // TODO
 }

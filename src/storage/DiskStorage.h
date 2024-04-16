@@ -9,8 +9,8 @@ namespace storage
     class DiskStorage : public IOrderStorage
     {
     public:
-        DiskStorage();
-        ~DiskStorage();
+        DiskStorage() = default;
+        virtual ~DiskStorage();
 
         bool SetSourceDestination(const std::string &dest);
 

@@ -26,3 +26,11 @@ function build_program()
     cmake -Bbuild -H. 
     cmake --build build    
 }
+
+function execute_program(){
+    /opt/coffeeShop/build/coffee_shop
+}
+
+function execute_tests(){
+    /opt/coffeeShop/build/test/coffee_shop_test
+}

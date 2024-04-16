@@ -3,9 +3,9 @@
 namespace storage
 {
 
-    DiskStorage::DiskStorage()
-    {
-    }
+    // DiskStorage::DiskStorage()
+    // {
+    // }
 
     DiskStorage::~DiskStorage()
     {
@@ -14,12 +14,14 @@ namespace storage
     bool DiskStorage::SetSourceDestination(const std::string &dest)
     {
         file_ = dest;
+        // TODO check if you can open or create file
+        return true;
     }
 
     int DiskStorage::StoreOrder(const Order &order)
     {
 
-        // Save Order to file
+        // TODO Save Order to file
 
         // if success
         order_curr_idx_++;
@@ -29,6 +31,7 @@ namespace storage
 
     bool DiskStorage::RemoveOrder(const int index)
     {
+        // TODO
         // remove order idx
 
         return true;

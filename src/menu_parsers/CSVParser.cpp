@@ -37,7 +37,7 @@ namespace menu
                     // Get all the info of line
                     std::vector<std::string> lineTokens;
                     char lineSeparator = ',';
-                    Tokenize(line, lineSeparator, lineTokens);
+                    utils::Tokenize(line, lineSeparator, lineTokens);
 
                     if (MAX_FIELDS <= lineTokens.size())
                     {
@@ -61,8 +61,8 @@ namespace menu
         entry.price = std::stod(lineTokens[BEV_PRICE_FIELD]);
 
         char secondSeparator = '-';
-        Tokenize(lineTokens[EXTRAS_FIELD], secondSeparator, entry.extras);
-        Tokenize(lineTokens[RULE_FIELD], secondSeparator, entry.rules);
+        utils::Tokenize(lineTokens[EXTRAS_FIELD], secondSeparator, entry.extras);
+        utils::Tokenize(lineTokens[RULE_FIELD], secondSeparator, entry.rules);
     }
 
     void CSVParser::SaveRawRules(const std::string &beverageName, const stcBeverageMenuEntry &entry)
@@ -70,18 +70,6 @@ namespace menu
         BeverageVariety beverageVariety = {beverageName, entry.type};
 
         setRawRules_.insert(std::make_pair(beverageVariety, entry.rules));
-    }
-
-    void CSVParser::Tokenize(const std::string &line, const char separator, std::vector<std::string> &tokens)
-    {
-        std::stringstream ssLine(line);
-
-        std::vector<std::string> lineTokens;
-        std::string elem = "";
-        while (std::getline(ssLine, elem, separator))
-        {
-            tokens.push_back(elem);
-        }
     }
 
 } // namespace menu
