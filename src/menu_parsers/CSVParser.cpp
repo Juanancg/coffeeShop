@@ -44,7 +44,7 @@ namespace menu
                         stcBeverageMenuEntry entry;
                         std::string name = lineTokens[BEVERAGE_FIELD];
                         ProcessMenuEntry(lineTokens, entry);
-
+                        SaveRawRules(name, entry);
                         menu_[name].emplace_back(entry);
                     }
                 }
@@ -63,6 +63,21 @@ namespace menu
         char secondSeparator = '-';
         utils::Tokenize(lineTokens[EXTRAS_FIELD], secondSeparator, entry.extras);
         utils::Tokenize(lineTokens[RULE_FIELD], secondSeparator, entry.rules);
+
+        auto it = entry.rules.begin();
+
+        while (it != entry.rules.end())
+        {
+            // If the field is empty
+            if (*it == "" || *it == "\"\"")
+            {
+                it = entry.rules.erase(it); // Erase the element and move iterator to the next one
+            }
+            else
+            {
+                ++it;
+            }
+        }
     }
 
     void CSVParser::SaveRawRules(const std::string &beverageName, const stcBeverageMenuEntry &entry)

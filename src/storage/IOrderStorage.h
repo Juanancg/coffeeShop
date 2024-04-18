@@ -4,6 +4,7 @@
 #include <vector>
 #include <map>
 #include <string>
+#include <memory>
 
 #include "../types/Order.h"
 
@@ -16,11 +17,12 @@ namespace storage
         virtual ~IOrderStorage() {}
         virtual bool SetSourceDestination(const std::string &dest) = 0;
 
-        virtual int StoreOrder(const Order &order) = 0;
+        virtual bool StoreOrder(const std::shared_ptr<Order> order) = 0;
         virtual bool RemoveOrder(const int index) = 0;
+        virtual int GetCurrentIdx() = 0;
 
     protected:
-        inline static int order_curr_idx_ = 0; // Current index
+        int currentIdx_ = 0;
     };
 
 }

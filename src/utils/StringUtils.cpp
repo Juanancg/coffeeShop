@@ -3,15 +3,16 @@
 namespace utils
 {
 
-    void Tokenize(const std::string &line, const char separator, std::vector<std::string> &tokens)
+    void Tokenize(const std::string &str, const char separator, std::vector<std::string> &tokens)
     {
         tokens.clear();
 
-        std::stringstream ssLine(line);
+        std::stringstream ss(str);
 
-        std::vector<std::string> lineTokens;
+        std::vector<std::string> strTokens;
         std::string elem = "";
-        while (std::getline(ssLine, elem, separator))
+
+        while (std::getline(ss, elem, separator))
         {
             tokens.push_back(elem);
         }

@@ -9,10 +9,19 @@ class Order
 {
 public:
     Order(std::unique_ptr<Beverage> drink);
-
     ~Order() = default;
+
+    /**
+     * @brief Convert to std::string follow by ; the info of the beverage of the order
+     *
+     * @return std::string
+     */
+    std::string ToString() const;
+
+    /**
+     * @brief Print the contents of the beverage
+     */
     void Print() const;
-    bool IsValid() const;
 
 private:
     std::unique_ptr<Beverage> beverage_;

@@ -9,15 +9,27 @@
 #include "../menu_parsers/CSVParser.h"
 #include "../types/Beverage.h"
 
+enum OptionsMainMenu
+{
+    NONE = 0,
+    ORDER_BEVERAGE = 1,
+    PRINT_ORDERS = 2,
+    REMOVE_ORDER = 3,
+    EXIT = 4,
+    MAX_OPTION = 5,
+};
+
 class UIiface
 {
 public:
     UIiface() = default;
     virtual ~UIiface() {}
 
-    virtual void Start(menu::MenuUI &menu) = 0;
+    virtual OptionsMainMenu MainMenu() = 0;
+    virtual void Start(const menu::MenuUI &menu) = 0;
     virtual std::unique_ptr<Beverage> createBeverage() = 0;
     virtual bool GetUserChoice(const int minNum, const int maxSize, int &choice) = 0;
+    virtual int GetIdxOrderToRm() const = 0;
 
 protected:
     std::unique_ptr<menu::IMenuParser> parser_ = nullptr;

@@ -6,7 +6,9 @@
 
 namespace rules
 {
-
+    /**
+     * @brief  Interface that represent a specific rule
+     */
     class IRuleExtras
     {
     public:

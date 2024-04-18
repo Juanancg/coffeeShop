@@ -12,6 +12,9 @@
 namespace rules
 {
 
+    /**
+     * @brief Rule of having two extras at the same time
+     */
     class CannotHaveBoth : public IRuleExtras
     {
     public:
@@ -21,6 +24,7 @@ namespace rules
             if (ruleExtras_.size() < 2)
             {
                 std::cout << "ERROR: Rule with wrong format \"" << rawRule << "\" expected name:(ingredient1;ingredient2)" << std::endl;
+                ruleExtras_.clear();
                 // NOTE: If the rule is malformatted then the check rule is going to pass all the checks as correct. Ask client if this is the behaviour intended
             }
         }
@@ -37,16 +41,23 @@ namespace rules
          */
         bool CheckRule(const std::vector<std::string> &extras)
         {
+            bool valid = true;
+
             // Search if all the extras that cannot be at the same time are present in the input vector
             for (const auto &ruleExtra : ruleExtras_)
             {
-                if (std::find(extras.begin(), extras.end(), ruleExtra) == extras.end())
+                if (std::find(extras.begin(), extras.end(), ruleExtra) != extras.end())
                 {
-                    return false;
+                    valid = false;
+                }
+                else
+                {
+                    valid = true;
+                    break;
                 }
             }
 
-            return true;
+            return valid;
         }
 
     private:

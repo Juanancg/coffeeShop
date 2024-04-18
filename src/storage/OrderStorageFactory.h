@@ -18,7 +18,7 @@ namespace storage
             NONE
         };
 
-        static std::unique_ptr<IOrderStorage> createParser(StorageType type)
+        static std::unique_ptr<IOrderStorage> CreateStorage(StorageType type)
         {
             switch (type)
             {

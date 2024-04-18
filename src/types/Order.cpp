@@ -4,14 +4,12 @@ Order::Order(std::unique_ptr<Beverage> drink) : beverage_(std::move(drink))
 {
 }
 
-void Order::Print() const
+std::string Order::ToString() const
 {
-    // TODO
-    beverage_->Print();
+    return beverage_->ToString();
 }
 
-bool Order::IsValid() const
+void Order::Print() const
 {
-    // TODO
-    return beverage_->IsValid();
+    beverage_->Print();
 }

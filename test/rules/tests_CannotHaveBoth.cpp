@@ -7,7 +7,7 @@ TEST_F(tests_CannotHaveBoth, CheckRuleValidExtras)
 
     std::vector<std::string> extras = {"milk", "sugar"};
 
-    EXPECT_FALSE(rule.CheckRule(extras));
+    EXPECT_TRUE(rule.CheckRule(extras));
 }
 
 TEST_F(tests_CannotHaveBoth, CheckRuleInvalidExtras)
@@ -17,7 +17,7 @@ TEST_F(tests_CannotHaveBoth, CheckRuleInvalidExtras)
 
     std::vector<std::string> extras = {"milk", "sugar", "lemon"};
 
-    EXPECT_TRUE(rule.CheckRule(extras));
+    EXPECT_FALSE(rule.CheckRule(extras));
 }
 
 TEST_F(tests_CannotHaveBoth, CheckRuleSignleValidExtra)
@@ -27,7 +27,7 @@ TEST_F(tests_CannotHaveBoth, CheckRuleSignleValidExtra)
 
     std::vector<std::string> extras = {"milk"};
 
-    EXPECT_FALSE(rule.CheckRule(extras));
+    EXPECT_TRUE(rule.CheckRule(extras));
 }
 
 TEST_F(tests_CannotHaveBoth, RawRuleMissformat)

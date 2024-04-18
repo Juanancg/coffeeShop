@@ -24,7 +24,7 @@ TEST_F(tests_CSVParser, ParseMenu)
 
     // Check coffee types
     auto coffeeIt = menuUi.find("coffee");
-    EXPECT_TRUE(coffeeIt != menuUi.end());
+    ASSERT_TRUE(coffeeIt != menuUi.end());
     EXPECT_EQ(coffeeIt->second.size(), 3);
     EXPECT_EQ(coffeeIt->second[0].type, "espresso");
     EXPECT_EQ(coffeeIt->second[0].price, 2.00);
@@ -32,8 +32,7 @@ TEST_F(tests_CSVParser, ParseMenu)
     EXPECT_EQ(coffeeIt->second[0].extras[0], "sugar");
     EXPECT_EQ(coffeeIt->second[0].extras[1], "milk");
     EXPECT_EQ(coffeeIt->second[0].extras[2], "cream");
-    EXPECT_EQ(coffeeIt->second[0].rules.size(), 1);
-    EXPECT_EQ(coffeeIt->second[0].rules[0], "\"\"");
+    EXPECT_EQ(coffeeIt->second[0].rules.size(), 0);
 
     EXPECT_EQ(coffeeIt->second[1].type, "latte");
     EXPECT_EQ(coffeeIt->second[1].price, 3.00);
@@ -41,8 +40,7 @@ TEST_F(tests_CSVParser, ParseMenu)
     EXPECT_EQ(coffeeIt->second[1].extras[0], "sugar");
     EXPECT_EQ(coffeeIt->second[1].extras[1], "milk");
     EXPECT_EQ(coffeeIt->second[1].extras[2], "cream");
-    EXPECT_EQ(coffeeIt->second[1].rules.size(), 1);
-    EXPECT_EQ(coffeeIt->second[1].rules[0], "\"\"");
+    EXPECT_EQ(coffeeIt->second[1].rules.size(), 0);
 
     EXPECT_EQ(coffeeIt->second[2].type, "decaf");
     EXPECT_EQ(coffeeIt->second[2].price, 2.50);
@@ -50,8 +48,7 @@ TEST_F(tests_CSVParser, ParseMenu)
     EXPECT_EQ(coffeeIt->second[2].extras[0], "sugar");
     EXPECT_EQ(coffeeIt->second[2].extras[1], "milk");
     EXPECT_EQ(coffeeIt->second[2].extras[2], "cream");
-    EXPECT_EQ(coffeeIt->second[2].rules.size(), 1);
-    EXPECT_EQ(coffeeIt->second[2].rules[0], "\"\"");
+    EXPECT_EQ(coffeeIt->second[2].rules.size(), 0);
 
     // Check tea types
     auto teaIt = menuUi.find("tea");
@@ -65,7 +62,7 @@ TEST_F(tests_CSVParser, ParseMenu)
     EXPECT_EQ(teaIt->second[0].extras[2], "soymilk");
     EXPECT_EQ(teaIt->second[0].extras[3], "honey");
     EXPECT_EQ(teaIt->second[0].extras[4], "lemon");
-    EXPECT_EQ(teaIt->second[0].rules.size(), 1);
+    ASSERT_EQ(teaIt->second[0].rules.size(), 1);
     EXPECT_EQ(teaIt->second[0].rules[0], "cannot_have:both(milk;lemon)");
 
     EXPECT_EQ(teaIt->second[1].type, "green tea");
@@ -76,7 +73,7 @@ TEST_F(tests_CSVParser, ParseMenu)
     EXPECT_EQ(teaIt->second[1].extras[2], "soymilk");
     EXPECT_EQ(teaIt->second[1].extras[3], "honey");
     EXPECT_EQ(teaIt->second[1].extras[4], "lemon");
-    EXPECT_EQ(teaIt->second[1].rules.size(), 1);
+    ASSERT_EQ(teaIt->second[1].rules.size(), 1);
     EXPECT_EQ(teaIt->second[1].rules[0], "cannot_have:both(milk;lemon)");
 
     // Check cocoa types
@@ -87,22 +84,19 @@ TEST_F(tests_CSVParser, ParseMenu)
     EXPECT_EQ(cocoaIt->second[0].price, 3.50);
     EXPECT_EQ(cocoaIt->second[0].extras.size(), 1);
     EXPECT_EQ(cocoaIt->second[0].extras[0], "sugar");
-    EXPECT_EQ(cocoaIt->second[0].rules.size(), 1);
-    EXPECT_EQ(cocoaIt->second[0].rules[0], "\"\"");
+    EXPECT_EQ(cocoaIt->second[0].rules.size(), 0);
 
     EXPECT_EQ(cocoaIt->second[1].type, "soymilk");
     EXPECT_EQ(cocoaIt->second[1].price, 4.00);
     EXPECT_EQ(cocoaIt->second[1].extras.size(), 1);
     EXPECT_EQ(cocoaIt->second[1].extras[0], "sugar");
-    EXPECT_EQ(cocoaIt->second[1].rules.size(), 1);
-    EXPECT_EQ(cocoaIt->second[1].rules[0], "\"\"");
+    EXPECT_EQ(cocoaIt->second[1].rules.size(), 0);
 
     EXPECT_EQ(cocoaIt->second[2].type, "water");
     EXPECT_EQ(cocoaIt->second[2].price, 3.00);
     EXPECT_EQ(cocoaIt->second[2].extras.size(), 1);
     EXPECT_EQ(cocoaIt->second[2].extras[0], "sugar");
-    EXPECT_EQ(cocoaIt->second[2].rules.size(), 1);
-    EXPECT_EQ(cocoaIt->second[2].rules[0], "\"\"");
+    EXPECT_EQ(cocoaIt->second[2].rules.size(), 0);
 
     // TODO CHECK RAWRULES and Remove
 }

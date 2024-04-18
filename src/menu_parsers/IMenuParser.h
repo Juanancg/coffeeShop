@@ -19,7 +19,7 @@ namespace menu
     // Defines the type that the UI needs to show all the data to the user
     typedef std::map<std::string, std::vector<menu::stcBeverageMenuEntry>> MenuUI;
 
-    // Defines the type for manage the weird rules.
+    // Defines the types for managing the weird rules.
     typedef std::pair<std::string, std::string> BeverageVariety; // std::pair<MainBeverage, BeverageVariety>
     typedef std::map<BeverageVariety, std::vector<std::string>> RawRules;
 

@@ -9,9 +9,35 @@ ShellUI::~ShellUI()
 {
 }
 
-void ShellUI::Start(menu::MenuUI &menu)
+void ShellUI::Start(const menu::MenuUI &menu)
 {
     menu_ = menu;
+}
+
+OptionsMainMenu ShellUI::MainMenu()
+{
+    while (true)
+    {
+        int choice = 0;
+
+        std::cout << "Select an option:" << std::endl;
+        std::cout << "1) Order Beverage" << std::endl;
+        std::cout << "2) Print Orders" << std::endl;
+        std::cout << "3) Remove Order" << std::endl;
+        std::cout << "4) Exit" << std::endl;
+
+        std::cin >> choice;
+
+        // Validate the users choice
+        if (OptionsMainMenu::NONE < choice && choice < OptionsMainMenu::MAX_OPTION)
+        {
+            return static_cast<OptionsMainMenu>(choice);
+        }
+        else
+        {
+            std::cout << "Invalid choice, try again" << std::endl;
+        }
+    }
 }
 
 std::unique_ptr<Beverage> ShellUI::createBeverage()
@@ -21,21 +47,10 @@ std::unique_ptr<Beverage> ShellUI::createBeverage()
 
     if (SelectMainBeverage(mainBeverage, beverageMenuEntry))
     {
+        menu::stcBeverageMenuEntry selectedEntry;
 
-        // Display beverage options (varieties) for the current type
-        for (size_t i = 0; i < beverageMenuEntry.size(); ++i)
+        if (SelectBeverageVariety(beverageMenuEntry, selectedEntry))
         {
-            auto &entry = beverageMenuEntry[i];
-            std::cout << i + 1 << ". " << entry.type << " - Price: " << entry.price << "€" << std::endl;
-        }
-
-        int varietyChoice = 0;
-
-        if (GetUserChoice(1, beverageMenuEntry.size(), varietyChoice))
-        {
-
-            // Get the selected beverage entry
-            auto &selectedEntry = beverageMenuEntry[varietyChoice - 1];
 
             // Ask user to choose extras
             std::vector<std::string> selectedExtras;
@@ -48,6 +63,25 @@ std::unique_ptr<Beverage> ShellUI::createBeverage()
     }
 
     return nullptr;
+}
+
+bool ShellUI::SelectBeverageVariety(const std::vector<menu::stcBeverageMenuEntry> &beverageVarietyEntries, menu::stcBeverageMenuEntry &beverageEntrySelected)
+{
+    // Display beverage options (varieties) for the current type
+    for (size_t i = 0; i < beverageVarietyEntries.size(); ++i)
+    {
+        auto &entry = beverageVarietyEntries[i];
+        std::cout << i + 1 << ". " << entry.type << " - Price: " << entry.price << "€" << std::endl;
+    }
+
+    int varietyChoice = 0;
+    if (GetUserChoice(1, beverageVarietyEntries.size(), varietyChoice))
+    {
+        beverageEntrySelected = beverageVarietyEntries[varietyChoice - 1];
+        return true;
+    }
+
+    return false;
 }
 
 bool ShellUI::GetUserChoice(const int minNum, const int maxSize, int &choice)
@@ -63,6 +97,15 @@ bool ShellUI::GetUserChoice(const int minNum, const int maxSize, int &choice)
     }
 
     return true;
+}
+
+int ShellUI::GetIdxOrderToRm() const
+{
+    int idx = -1;
+    std::cout << "Enter the number of the order that you want to delete: ";
+    std::cin >> idx;
+
+    return idx;
 }
 
 bool ShellUI::SelectMainBeverage(std::string &beverageName, std::vector<menu::stcBeverageMenuEntry> &beverageMenuEntry)
@@ -104,7 +147,8 @@ void ShellUI::SelectExtras(const std::vector<std::string> &availableExtras, std:
         std::cout << "Choose an extra (0 to finish): ";
         if (!GetUserChoice(0, availableExtras.size(), extraChoice))
         {
-            break;
+            // Not break if the user has insert an invalid number, just try again
+            continue;
         }
 
         if (extraChoice == 0)

@@ -9,7 +9,15 @@
 namespace utils
 {
 
-    void Tokenize(const std::string &line, const char separator, std::vector<std::string> &tokens);
+    /**
+     * @brief Tokenize a given string by a separator
+     *
+     * @param [in] str str to tokenize
+     * @param [in] separator char separator
+     * @param [out] tokens vector with the string tokens
+     *
+     */
+    void Tokenize(const std::string &str, const char separator, std::vector<std::string> &tokens);
 
 }
 

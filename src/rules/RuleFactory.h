@@ -15,15 +15,17 @@ namespace rules
     class RuleFactory
     {
     public:
+        // Identifiers of each rule
         inline static const std::string RULE_CANNOT_BOTH = "cannot_have:both";
 
+        // Enum that identifies all the rules implemented in the system
         enum class RuleType
         {
             CANNOT_BOTH,
             NONE
         };
 
-        static std::unique_ptr<IRuleExtras> createRule(const std::string &rawRule)
+        static std::unique_ptr<IRuleExtras> CreateRule(const std::string &rawRule)
         {
 
             RuleType ruleType = ParseRawRuleType(rawRule);
@@ -38,6 +40,13 @@ namespace rules
             }
         }
 
+        /**
+         * @brief Gets the raw rule (an string) and find if the rule is loaded in the set of rules
+         *
+         * @param [in] rawRule string with the raw rule
+         *
+         * @return RuleType
+         */
         static RuleType ParseRawRuleType(const std::string &rawRule)
         {
             RuleType ret = RuleType::NONE;
@@ -58,6 +67,7 @@ namespace rules
         }
 
     private:
+        // Set of all the rules available in the system
         inline static std::map<std::string, RuleType> ruleSet_ = {{RULE_CANNOT_BOTH, RuleType::CANNOT_BOTH}};
     };
 

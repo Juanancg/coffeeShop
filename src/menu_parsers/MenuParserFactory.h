@@ -18,7 +18,7 @@ namespace menu
             NONE
         };
 
-        static std::unique_ptr<IMenuParser> createParser(ParserType type)
+        static std::unique_ptr<IMenuParser> CreateParser(ParserType type)
         {
             switch (type)
             {
